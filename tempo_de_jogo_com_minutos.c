@@ -11,8 +11,20 @@ int main() {
 
     horas = hr_fin - hr_ini;
     minutos = min_fin - min_ini;
+    
+    int minutoshr = 0;
 
-    printf("%d e %d\n", horas, minutos);
+    if(horas<0){
+        horas += 24;
+    } else if(horas==0){
+        horas =24;
+    } else if(minutos<0 && horas==1){
+        horas = 60;
+        minutos+=horas;
+        horas = minutoshr;
+    }
+
+    printf("O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n", horas, minutos);
 
     return 0;
 }
