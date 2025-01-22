@@ -6,23 +6,27 @@ int main() {
 
     scanf("%d%d%d%d", &hr_ini, &min_ini, &hr_fin, &min_fin);
 
-    int horas;
-    int minutos;
+    int comeco, fim, duracao;
 
-    horas = hr_fin - hr_ini;
-    minutos = min_fin - min_ini;
-    
-    int minutoshr = 0;
+//converte tudo para minutos
 
-    if(horas<0){
-        horas += 24;
-    } else if(horas==0){
-        horas =24;
-    } else if(minutos<0 && horas==1){
-        horas = 60;
-        minutos+=horas;
-        horas = minutoshr;
+    comeco = hr_ini * 60 + min_ini;
+    fim = hr_fin * 60 + min_fin;
+    duracao = fim - comeco;
+
+//condiciona o cenário negativo e nulo, aumentando um dia
+
+    if(duracao<=0){
+        duracao+=24 * 60;
     }
+
+    int horas, minutos;
+
+//em minutos, ao dividir por 60, vc obtém as horas e ao tirar o resto de 60, vc obtém os minutos
+
+    horas = duracao/60;
+    minutos = duracao%60;
+
 
     printf("O JOGO DUROU %d HORA(S) E %d MINUTO(S)\n", horas, minutos);
 
